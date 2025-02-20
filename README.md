@@ -28,13 +28,13 @@ transformer head, added with positional encoding, and through three transformer 
 the recording, the output of the transformer head is going through a different set of FCs.
 
 ## Instructions
-1. Install the conda virtual environment as specified in 'environment.yml'.
+1. Install the conda virtual environment as specified in `environment.yml`.
 ```bash
 conda env create -f environment.yml
 conda activate DeepHHF
 ```
 
-2. Run the model on sample test recordings using 'main.py'.
+2. Run the model on sample test recordings using `main.py`.
 ```bash
 python main.py
 ```
