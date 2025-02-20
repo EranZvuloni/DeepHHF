@@ -8,7 +8,7 @@ example_ind = 4623
 # example_ind = 15740
 # example_ind = 33217
 # example_ind = 24625
-signal = np.load(f'Holter_{example_ind}.npz')['signal']
+signal = np.load(f'data/Holter_{example_ind}.npz')['signal']
 
 # Preprocess:
 signal = Preprocessor()(signal)
@@ -24,7 +24,7 @@ model_parameters = {'encoder_only': False,
 
 model = DeepHHFModel(input_shape=signal.shape, init_device=device, **model_parameters).to(device)
 
-model.load_state_dict(torch.load('model_state.pth', map_location=device))
+model.load_state_dict(torch.load('model/model_state.pth', map_location=device))
 
 if device.type == 'cpu':  # The model was trained with dtype=torch.bfloat16
     model = model.to(torch.torch.float32)
