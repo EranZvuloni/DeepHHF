@@ -2,7 +2,7 @@
 
 This is the Deep Holter Heart Failure Model (DeepHHF) for predicting 5-year HF risk from 24-hour ECG recordings.
 
-## Abstract:
+## Abstract
 Heart failure (HF) affects 10% adults aged 65 and older, reducing quality of life and longevity. Preventing HF can lower
 morbidity and mortality. We hypothesized that artificial intelligence (AI) applied to 24-hour single-lead
 electrocardiogram (ECG) data could predict HF risk within five years. To explore this, the Technion-Leumit Holter ECG
@@ -15,7 +15,7 @@ deep learning to model 24-hour continuous ECG data, capturing paroxysmal events 
 reliable risk prediction. AI applied to single-lead Holter ECGs is non-invasive, inexpensive, and widely accessible,
 making it a promising HF risk prediction tool.
 
-## DeepHHF model overview:
+## DeepHHF model overview
 ![DeepHHF Architecture](./architecture.png)
 
 The full 24-hour recording is split to 30-second windows, then going into the encoder, which outputs features for each
@@ -27,7 +27,7 @@ block (black frame) for window HF prediction. In the second training step, all w
 transformer head, added with positional encoding, and through three transformer encoders. For the final prediction of
 the recording, the output of the transformer head is going through a different set of FCs.
 
-## Instructions:
+## Instructions
 1. Install the conda virtual environment as specified in 'environment.yml'.
 ```bash
 conda env create -f environment.yml
@@ -40,7 +40,7 @@ python main.py
 ```
 You can modify the script by commenting/uncommenting specific example indices to test different recordings.
 
-## Data:
+## Data
 We provide four sample Holter ECG recordings from the TLHE dataset, all of which were part of the test set.
 
 - HF-positive samples (high risk):
