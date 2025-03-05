@@ -7,3 +7,4 @@ dependencies:
   - pytorch-cuda=11.8
   - pytorch==2.2.2
   - torchaudio==2.2.2
+  - matplotlib==3.7.2

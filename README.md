@@ -49,8 +49,22 @@ We provide four sample Holter ECG recordings from the TLHE dataset, all of which
 - Non-HF samples (low risk):
   - 4623 and 15740: Labeled as non-HF and correctly identified as low risk by DeepHHF.
 
+The start time of each recording throughout the day is provided as a Python dictionary and saved in the
+`daytime_starts.npy` file. This information is used to plot the explainability analysis in relation to the time of day.
+
 ## Preprocess
 Before being input into the model, the recordings undergo preprocessing:
 1. Standardized Duration: Trimmed or padded to exactly 24 hours.
 2. Downsampling: A 30-second window is extracted from each 2-minute segment, forming a 6-hour compressed representation.
 3. Tensor Conversion: The processed data is transformed into a PyTorch Tensor for model inference.
+
+## Explainability analysis
+
+We provide the main code for generating explainability maps over our Holter ECG signal examples, analyzing the circadian
+component of DeepHHF. The explainability analysis was conducted using gradient attention rollout, adapted
+from [Abnar et al.](https://aclanthology.org/2020.acl-main.385/) and
+[Gildenblat](https://jacobgil.github.io/deeplearning/vision-transformer-explainability). This technique involved
+modifying the original Vision Transformer code to accommodate 1D time-series signals. Specifically, the multi-head
+attention from each transformer encoder layer was extracted and weighted by its gradient, then accumulated into a single
+attention map across all encoder layers.
+The provided `main.py` script visualizes the explainability map for each example using the `matplotlib` package.

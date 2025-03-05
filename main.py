@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from model_components import DeepHHFModel
 from preprocess_components import Preprocessor
+from explainability import AttentionGradRollout, explain_plot
 
 # Load an example:
 example_ind = 4623
@@ -51,3 +52,9 @@ else:
     risk = 'LOW'
 
 print(f"Patient risk level to develop heart failure in the next 5 years is {risk}; model output probability={round(model_output, 3)}")
+
+# Explainability analysis:
+att_grad_rollout = AttentionGradRollout(model, attention_layer_name='attn', discard_ratio=0.9)
+mask, A_map = att_grad_rollout(signal, by_heads=False)
+daytime_start = np.load('data/daytime_starts.npy', allow_pickle=True).item()[example_ind]  # Load the clock time of the recording
+explain_plot(signal, daytime_start, mask)  # will plot using plt.show()
