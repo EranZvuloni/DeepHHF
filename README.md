@@ -1,5 +1,7 @@
 # DeepHHF: Modeling Day-Long ECG Signals to Predict Heart Failure Risk with Explainable AI
 
+[![DOI](https://zenodo.org/badge/935980845.svg)](https://doi.org/10.5281/zenodo.15864755)
+
 This is the Deep Holter Heart Failure Model (DeepHHF) for predicting 5-year HF risk from 24-hour ECG recordings.
 
 ## Abstract
